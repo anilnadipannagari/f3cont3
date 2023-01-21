@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="bd">
+      <!-- heading -->
+      <h1>To-Do List</h1>
+      <!-- flex box -->
+      <div class="adder">
+              <input placeholder="Item Name" id="in">
+              <input placeholder="Deadline " type="date" id="dt">
+             <select name="priority" id="prt">
+              <option value="default">Priority</option>
+              <option value="high">High</option>
+              <option value="mid">Medium</option>
+              <option value="low">Low</option>
+              </select>
+              <button  id="btn" for="item">Add Item</button>
+      </div>
+      <div class="space"></div>
+      <!-- today list --><div class="pd">
+        <h2 >Today’s TodoList</h2>
+        
+        <div class="data">
+             <label>1.AccioJob Assignment</label>
+             <label>16/1/2022</label>
+             <label>Priority: High </label>
+            <img src="data:image/jpeg;base64,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" alt="random"> 
+        </div>
+      <div class="data">
+            <label>2.AccioJob Assignment 2</label>
+            <label>18/1/2022</label>
+            <label>Priority: High </label>
+       </div></div> <div class="space"></div>
+       <!-- feature -->
+       <div class="pd">
+       <h2 >Feature TodoList</h2>
+           
+            <div class="data">
+             <label>1.AccioJob Assignment 1</label>
+             <label>14/1/2022</label>
+             <label>Priority: High </label>
+             <span>&#10003;</span> 
+           </div>
+          <div class="data"><label>
+               <span>2.AccioJob Assignment 2</span></label>
+               <label>16/1/2022</label>
+               <label>Priority: Medium </label>
+             </div>
+             </div> <div class="space"></div>
+        <!-- assignmnent -->
+        <div class="pd">
+        <h2>Completed TodoList</h2>
+          <!-- <div class="pd"> -->
+          <div class="data1"><label>
+          <span>1.AccioJob Assignment 0</span>
+          </label>
+         <label>20/1/2022</label>
+         <label>Priority: Medium </label>
+        </div>
+      
+      <div  class="data1">
+      <span>2.AccioJob Assignment 1</span>
+      <label>12/1/2022</label>
+      <label>Priority: Low </label>
+      </div>
+      </div>
+      <!-- <script src="script.js" type="module"></script> -->
+  </body>
+</html>
+
